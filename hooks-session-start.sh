@@ -27,18 +27,17 @@ fi
 
 log_event "✓ haiku.db verified ($(du -h "$HAIKU_DB" | cut -f1))"
 
-# Step 2: Run panic-button sync (updates database)
-log_event "🔄 Running haiku-sync (panic-button.sh)..."
+# Step 2: Run panic-button sync with 5-second timeout (non-blocking)
+log_event "🔄 Running haiku-sync (timeout: 5s)..."
 cd "$HAIKU_DIR" || {
   log_event "❌ ERROR: Cannot cd to $HAIKU_DIR"
   exit 1
 }
 
-if "$PANIC_BUTTON" >> "$LOG_FILE" 2>&1; then
-  log_event "✓ Haiku-sync completed"
-else
-  log_event "⚠️ WARNING: Haiku-sync had issues (non-fatal, continuing)"
-fi
+# Run with timeout - if it takes >5s, continue anyway (non-blocking)
+timeout 5s "$PANIC_BUTTON" >> "$LOG_FILE" 2>&1 && \
+  log_event "✓ Haiku-sync completed" || \
+  log_event "ℹ️ Haiku-sync skipped (timeout or error, non-blocking)"
 
 # Step 3: Detect current project
 CURRENT_PROJECT=$(basename "$(pwd)" 2>/dev/null | grep -oE "^Q[0-9]+" || echo "CURRENT_PROJECT")
