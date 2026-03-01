@@ -1,0 +1,44 @@
+{
+  "name": "claude-three-tier-search",
+  "version": "1.0.0",
+  "description": "Intelligent multi-tier conversation search system for AI assistants with persistent memory",
+  "main": "extract-tier2-metadata.js",
+  "bin": {
+    "extract-metadata": "extract-tier2-metadata.js"
+  },
+  "scripts": {
+    "extract": "node extract-tier2-metadata.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "search",
+    "full-text-search",
+    "fts5",
+    "sqlite3",
+    "ai",
+    "claude",
+    "conversation",
+    "memory",
+    "persistent-memory",
+    "three-tier",
+    "metadata",
+    "indexing"
+  ],
+  "author": "MJC (mjc02840)",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mjc02840/claude-three-tier-search.git"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "dependencies": {
+    "sqlite3": "^5.1.6"
+  },
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/mjc02840/claude-three-tier-search/issues"
+  },
+  "homepage": "https://github.com/mjc02840/claude-three-tier-search#readme"
+}
