@@ -1,0 +1,106 @@
+# Project Memory - Voice Interface Claude 002
+
+## User Preference: AUTOMATE EVERYTHING
+**Critical:** User is 77 years old, bootstrapped, wants minimal manual work.
+
+**User's explicit request (2026-02-27):**
+> "Automate everything. I want you to do all of the provisioning and all of the deployment."
+
+**Translation:**
+- ❌ NO manual SSH commands for user to type
+- ❌ NO step-by-step instructions requiring interaction
+- ✅ Fully automated deployment scripts
+- ✅ Single command or completely hands-off approach
+- ✅ User shouldn't need to touch terminal
+
+**Implementation strategy:**
+- Use fully automated deployment where possible
+- Write deployment scripts that handle everything
+- Provide complete automation or clear path to automation
+- When stuck (SSH auth issues), ask for PERMISSION/ACCESS to automate, not manual steps
+
+---
+
+## RESPONSE FORMAT DISCIPLINE (2026-03-01)
+**MANDATORY FOR ALL RESPONSES - FOREVER**
+
+Every response must follow this format:
+
+```
+YYYY-MM-DD HH:MM:SS UTC
+=============================================================
+[Response content here]
+=============================================================
+```
+
+**Example:**
+```
+2026-03-01 18:55:00 UTC
+=============================================================
+Your response text goes here.
+=============================================================
+```
+
+**Why:** Traceability, structure, and temporal context for knowledge graph and relational memory systems.
+
+**Applies to:** All responses in all projects, all future sessions, no exceptions.
+
+---
+
+## VERSION CONTROL DISCIPLINE (2026-03-01)
+**CRITICAL REQUIREMENT: DUAL COMMIT ALWAYS**
+
+Every significant code/documentation change MUST be committed to BOTH:
+1. **Git** (GitHub primary) - `git add . && git commit -m "..."`
+2. **Fossil SCM** (Fossil backup) - `fossil add . && fossil commit -m "..."`
+
+**Why Both:**
+- Git: Visible to team, backup to GitHub
+- Fossil: Project-local SCM, additional redundancy
+- User has both systems set up intentionally
+
+**Pattern to Follow:**
+```bash
+# After making changes:
+git add MODIFIED_FILES
+git commit -m "Commit message"
+fossil add .
+fossil commit -m "Commit message"
+# OR use automated fossil commit in hooks
+```
+
+**DO NOT:** Commit to only one system. Both must be kept in sync.
+
+---
+
+## Project Status
+
+### Languages (Confirmed)
+- ✅ Romanian (default)
+- ✅ English
+- ✅ French
+- ✅ Italian
+
+### Circuit Focus (Recommended)
+- Automation & Measurement (sensors, lighting, control)
+- Power Electronics (solar, charging)
+
+### Business Model
+- **Q.RO Phase 1:** Customer owns website, you administer (€500-1500/month)
+- **Phase 2:** Marketplace for USA (later, after Q.RO proves model)
+
+### VPS Architecture
+- Option 4: OVH Managed Service (automatic failover, €20/mo)
+
+### Files Ready to Deploy
+- Q.RO_DEPLOYMENT_PLAN.md
+- Q.RO_DEPLOYMENT_CHECKLIST.md
+- Q.RO_MAINTENANCE_RUNBOOK.md
+- QUINTRIX_PITCH_SUMMARY.md
+- QUINTRIX_DEMO_VIDEO_SCRIPT.md
+- QUINTRIX_PRICING_SHEET.html
+- DEPLOY_TO_VPS_80.md
+
+### Current Blocker
+- VPS .80 SSH authentication (password auth disabled, key auth failing)
+- Need: Automated deployment without manual terminal steps
